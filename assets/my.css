@@ -1839,6 +1839,14 @@ img.mfp-img {
 	padding: 5px 0
 }
 
+.topbar.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10000;
+}
+
 .topbar .container {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -1911,7 +1919,7 @@ img.mfp-img {
 	margin-right: 0.5em
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 550px) {
 	.topbar-nav .contacts-list .list-item-link {
 		background-color: #ffffff;
 		color: #394040;
@@ -1950,9 +1958,17 @@ img.mfp-img {
 
 .header {
 	position: relative;
+	background: #fff;
 	z-index: 2;
 	-webkit-box-shadow: 0 3px 7px rgba(23, 26, 26, 0.15);
 	box-shadow: 0 3px 7px rgba(23, 26, 26, 0.15)
+}
+.header.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10000;
 }
 
 .header .container {

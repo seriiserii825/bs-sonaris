@@ -63,40 +63,40 @@
         <div class="sticky-right">
             <nav class="nav sticky-nav">
 				<?php
-					$id_rus = 19;
-					$id_en  = 21;
-					$id_ro  = 23;
-					$locale = get_locale();
-					
-					if ( $locale === 'ro_RO' ) {
-						$id = $id_ro;
-					} elseif ( $locale === 'ru_RU' ) {
-						$id = $id_rus;
-					} else {
-						$id = $id_en;
-					}
-					
-					$categories = get_categories( [
-						'taxonomy'     => 'category',
-						'type'         => 'post',
-						'child_of'     => 0,
-						'parent'       => $id,
-						'orderby'      => 'name',
-						'order'        => 'ASC',
-						'hide_empty'   => 0,
-						'hierarchical' => 1,
-						'exclude'      => '',
-						'include'      => '',
-						'number'       => 0,
-						'pad_counts'   => false,
-					] );
+				$id_rus = 19;
+				$id_en = 21;
+				$id_ro = 23;
+				$locale = get_locale();
+
+				if ($locale === 'ro_RO') {
+					$id = $id_ro;
+				} elseif ($locale === 'ru_RU') {
+					$id = $id_rus;
+				} else {
+					$id = $id_en;
+				}
+
+				$categories = get_categories([
+					'taxonomy' => 'category',
+					'type' => 'post',
+					'child_of' => 0,
+					'parent' => $id,
+					'orderby' => 'name',
+					'order' => 'ASC',
+					'hide_empty' => 0,
+					'hierarchical' => 1,
+					'exclude' => '',
+					'include' => '',
+					'number' => 0,
+					'pad_counts' => false,
+				]);
 				?>
 
                 <ul class="list">
-					<?php foreach ( $categories as $category ): ?>
+					<?php foreach ($categories as $category): ?>
                         <li class="list-item">
                             <a class="list-item-link"
-                               href="<?php echo get_category_link( $category->term_id ) ?>"><?php echo $category->name; ?></a>
+                               href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name; ?></a>
                         </li>
 					<?php endforeach; ?>
                 </ul>
@@ -104,15 +104,15 @@
         </div>
     </div>
 </div>
-<div class="topbar">
+<div class="topbar" id="js-topbar">
     <div class="container">
         <div class="topbar-left">
             <nav class="nav topbar-nav">
                 <ul class="list social-list">
 					<?php
-						$facebook = carbon_get_theme_option( 'crb_facebook' );
-						$youtube  = carbon_get_theme_option( 'crb_youtube' );
-						$twitter  = carbon_get_theme_option( 'crb_twitter' );
+					$facebook = carbon_get_theme_option('crb_facebook');
+					$youtube = carbon_get_theme_option('crb_youtube');
+					$twitter = carbon_get_theme_option('crb_twitter');
 					?>
                     <li class="list-item">
                         <a class="list-item-link facebook" href="<?php echo $facebook; ?>" target="_blank">
@@ -130,23 +130,34 @@
             <nav class="nav topbar-nav">
                 <ul class="list contacts-list">
 					<?php
-						$phone       = carbon_get_theme_option( 'crb_phone' );
-						$phone_clear = clear_phone( $phone );
+					$phone_chishinau = carbon_get_theme_option('crb_phone_chishinau');
+					$phone_chishinau_clear = clear_phone($phone_chishinau);
+
+					$phone_balti = carbon_get_theme_option('crb_phone_balti');
+					$phone_balti_clear = clear_phone($phone_balti);
 					?>
                     <li class="list-item">
-                        <a class="list-item-link" href="tel:<?php echo $phone_clear; ?>">
+                        <a class="list-item-link" title="<?php echo carbon_get_theme_option('crb_chishinau'.get_lang()); ?>" href="tel:<?php echo $phone_chishinau_clear; ?>">
                             <i class="fa fa-phone"></i>
-                            <span><?php echo $phone; ?></span>
+                            <span><?php echo carbon_get_theme_option('crb_chishinau'.get_lang()); ?>:</span>
+                            <span><?php echo $phone_chishinau; ?></span>
                         </a>
                     </li>
-
-                    <li class="list-item"><a class="list-item-link" href="mailto:<?php bloginfo( 'admin_email' ); ?>"><i
-                                    class="fa fa-envelope"></i><span><?php bloginfo( 'admin_email' ); ?></span></a></li>
+                    <li class="list-item">
+                        <a class="list-item-link" title="<?php echo carbon_get_theme_option('crb_balti'.get_lang()); ?>" href="tel:<?php echo $phone_balti_clear; ?>">
+                            <i class="fa fa-phone"></i>
+                            <span><?php echo carbon_get_theme_option('crb_balti'.get_lang()); ?>:</span>
+                            <span><?php echo $phone_balti; ?></span>
+                        </a>
+                    </li>
+                    <li class="list-item"><a class="list-item-link"
+                                             href="mailto:<?php echo carbon_get_theme_option('crb_email'); ?>"><i
+                                    class="fa fa-envelope"></i><span><?php echo carbon_get_theme_option('crb_email'); ?></span></a></li>
                 </ul>
             </nav>
 
             <nav class="nav topbar-nav">
-				<?php if ( ! dynamic_sidebar( 'sidebar-language' ) ): ?>
+				<?php if (!dynamic_sidebar('sidebar-language')): ?>
                     <h4 style="color: red;">Add language from wiget</h4>
 				<?php endif; ?>
             </nav>
@@ -154,60 +165,60 @@
         </div>
     </div>
 </div>
-<div class="header">
+<div class="header" id="js-header">
     <div class="container">
         <div class="header-left">
-	        <?php
-		        $img_id = carbon_get_theme_option('crb_logo'.get_lang());
-	        ?>
+			<?php
+			$img_id = carbon_get_theme_option('crb_logo' . get_lang());
+			?>
             <a class="header-brand" href="<?php echo home_url(); ?>">
-				<?php echo wp_get_attachment_image( $img_id, 'full' ); ?>
+				<?php echo wp_get_attachment_image($img_id, 'full'); ?>
             </a>
         </div>
 
         <div class="header-right">
-			<?php wp_nav_menu( array(
-				'theme_location'  => 'menu-header',
-				'menu'            => '',
-				'container'       => 'nav',
+			<?php wp_nav_menu(array(
+				'theme_location' => 'menu-header',
+				'menu' => '',
+				'container' => 'nav',
 				'container_class' => 'nav header-nav',
-				'container_id'    => '',
-				'menu_class'      => 'list',
-				'menu_id'         => '',
-				'echo'            => true,
-				'fallback_cb'     => 'wp_page_menu',
-				'before'          => '',
-				'after'           => '',
-				'link_before'     => '',
-				'link_after'      => '',
-				'items_wrap'      => '<ul id = "%1$s" class = "%2$s">%3$s</ul>',
-				'depth'           => 0,
-				'walker'          => '',
-			) ); ?>
-            
-            <?php if(get_lang() == '_ru'): ?>
+				'container_id' => '',
+				'menu_class' => 'list',
+				'menu_id' => '',
+				'echo' => true,
+				'fallback_cb' => 'wp_page_menu',
+				'before' => '',
+				'after' => '',
+				'link_before' => '',
+				'link_after' => '',
+				'items_wrap' => '<ul id = "%1$s" class = "%2$s">%3$s</ul>',
+				'depth' => 0,
+				'walker' => '',
+			)); ?>
+
+			<?php if (get_lang() == '_ru'): ?>
                 <button class="btn btn-danger btn-rounded waves-effect eModal-1">
                     <i class="fa fa-phone"></i>
                     <span>Заказать звонок</span>
                 </button>
-            <?php endif; ?>
-            
-            
-	        <?php if(get_lang() == '_ro'): ?>
+			<?php endif; ?>
+
+
+			<?php if (get_lang() == '_ro'): ?>
                 <button class="btn btn-danger btn-rounded waves-effect eModal-2">
                     <i class="fa fa-phone"></i>
                     <span>Un apel</span>
                 </button>
-	
-	        <?php endif; ?>
-         
-	        <?php if(get_lang() == '_en'): ?>
+
+			<?php endif; ?>
+
+			<?php if (get_lang() == '_en'): ?>
                 <button class="btn btn-danger btn-rounded waves-effect eModal-3">
                     <i class="fa fa-phone"></i>
                     <span>Request a call</span>
                 </button>
-	
-	        <?php endif; ?>
+
+			<?php endif; ?>
 
             <button class="btn btn-bars" data-toggle="navbar"><i class="fa fa-bars"></i></button>
         </div>
