@@ -1,28 +1,16 @@
 <div class="section section-portfolio">
-	<h2 class="section-portfolio-title"><?php echo __('Portfolio', 'bs_sonaris') ?></h2>
-	<div class="portfolio">
-		<?php
-			$portfolio_posts = new WP_Query([
-				'post_type' => 'portfolio',
-				'posts_per_page' => 10
-			]);
+	<h2 class="section-portfolio-title"><?php echo carbon_get_theme_option('crb_portfolio_single_gallery_title'.get_lang()); ?></h2>
 
-		?>
 
-		<?php if ( $portfolio_posts->have_posts() ) :?>
-		<?php while ( $portfolio_posts->have_posts() ) :?>
-			<?php $portfolio_posts->the_post(); ?>
-			<?php
-				$thumb_url = kama_thumb_src('w=300 &h=300');
-			?>
+    <div class="gallery" id="js-gallery">
+		<?php $images = carbon_get_post_meta(get_the_ID(), 'crb_portfolio_gallery'); ?>
 
-			<a class="portfolio-item waves-effect" href="<?php the_permalink(); ?>">
-				<img class="portfolio-item-img" src="<?php echo $thumb_url; ?>" alt=""/>
-				<span class="btn btn-white btn-rounded"><?php echo __('More', 'bs_sonaris'); ?></span>
-			</a>
-		<?php endwhile; ?>
-		<?php endif; ?>
-	</div>
-	<a class="btn btn-primary btn-lg btn-rounded waves-effect" href="<?php echo get_post_type_archive_link('portfolio'); ?>"><?php echo __('More works', 'bs_sonaris') ?></a>
-
+		<?php foreach($images as $image): ?>
+            <div class="gallery__item">
+                <a href="<?php echo  kama_thumb_src('w=550 &h=550', $image);?>">
+					<?php echo kama_thumb_img( 'w=150 &h=150', $image ); ?>
+                </a>
+            </div>
+		<?php endforeach; ?>
+    </div>
 </div>

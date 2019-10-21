@@ -8,6 +8,7 @@ require_once __DIR__.'/inc/carbon-fields/cb-term-meta.php';
 require_once __DIR__.'/inc/func.php';
 require_once __DIR__.'/inc/acf-category.php';
 require_once __DIR__.'/inc/enqueue-style.php';
+require_once __DIR__.'/inc/bs-taxonomy.php';
 require_once __DIR__.'/inc/post-type.php';
 require_once __DIR__.'/inc/sidebar.php';
 require_once __DIR__.'/inc/classses/ServicesWidget.php';

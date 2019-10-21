@@ -111,6 +111,13 @@ function crb_attach_theme_options()
 				->set_width(30),
 			Field::make('text', 'crb_balti_en', 'crb_balti_en')
 				->set_width(30),
+
+			Field::make('text', 'crb_portfolio_single_gallery_title_ro', 'crb_portfolio_single_gallery_title_ro')
+				->set_width(30),
+			Field::make('text', 'crb_portfolio_single_gallery_title_ru', 'crb_portfolio_single_gallery_title_ru')
+				->set_width(30),
+			Field::make('text', 'crb_portfolio_single_gallery_title_en', 'crb_portfolio_single_gallery_title_en')
+				->set_width(30),
 		));
 
 }
