@@ -5,5 +5,6 @@
 
 <a class="portfolio-item waves-effect" href="<?php the_permalink(); ?>">
 	<img class="portfolio-item-img" src="<?php echo $thumb_url; ?>" alt=""/>
-	<span class="btn btn-white btn-rounded"><?php echo __('More', 'bs_sonaris') ?></span>
+<!--	<span class="btn btn-white btn-rounded">--><?php //the_title(); ?><!--</span>-->
+    <span class="portfolio-item__title"><?php the_title(); ?></span>
 </a>

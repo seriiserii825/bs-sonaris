@@ -2551,12 +2551,20 @@ img.mfp-img {
 }
 
 .portfolio {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
 	padding: 20px 0 40px
+}
+.portfolio-block {
+	margin-bottom: 60px;
+	text-align: left;
+}
+.portfolio-block h2 {
+	border-bottom: 1px solid #d4dbea;
+}
+.portfolio-block a{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 .portfolio:hover .portfolio-item {
@@ -2567,16 +2575,10 @@ img.mfp-img {
 	opacity: 1
 }
 
-.portfolio-item {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
+.portfolio-block .portfolio-item {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
 	width: 20%;
 	padding-top: 20%;
 	height: 0;
@@ -2595,7 +2597,17 @@ img.mfp-img {
 	backface-visibility: hidden;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	position: relative
+}
+.portfolio-block .portfolio-item__title {
+	position: absolute;
+	bottom: 20px;
+	left: 10px;
+	padding: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #b0cb1f;
+	background: rgba(0,0,0,.8);
+	z-index: 1000;
 }
 
 .portfolio-item-img {
@@ -3261,8 +3273,24 @@ a.more-link {
 }
 
 .contacts {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 20px;
 	padding-bottom: 40px;
 }
+
+.contacts__item:first-child {
+	border-right: 1px solid #d4dbea;
+}
+@media screen and (max-width: 768px) {
+	.contacts {
+		display: block;
+	}
+	.contacts__item:first-child {
+		border: none;
+	}
+}
+
 
 .contacts h3 {
 	font-weight: bold;
