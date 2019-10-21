@@ -847,6 +847,7 @@ h6:first-child {
 h1 {
 	font-size: 4rem
 }
+
 @media screen and (max-width: 1000px) {
 	h1 {
 		font-size: 2rem;
@@ -1963,6 +1964,7 @@ img.mfp-img {
 	-webkit-box-shadow: 0 3px 7px rgba(23, 26, 26, 0.15);
 	box-shadow: 0 3px 7px rgba(23, 26, 26, 0.15)
 }
+
 .header.fixed {
 	position: fixed;
 	top: 0;
@@ -1982,11 +1984,9 @@ img.mfp-img {
 }
 
 @media screen and (max-width: 500px) {
-	.header .container {
-		display: block;
-		padding: 20px;
+	.header button span {
+		display: none;
 	}
-
 }
 
 
@@ -3342,6 +3342,7 @@ div.wpcf7-response-output {
 .emodal {
 	border-radius: 10px !important;
 }
+
 .emodal-title {
 	margin: 0 0 10px !important;
 	font-size: 1.5rem !important;
@@ -3357,6 +3358,7 @@ div.wpcf7-response-output {
 	font-family: 'Fira Sans', sans-serif !important;
 	color: #768094 !important;
 }
+
 .emodal-content p {
 	margin: 0 auto 20px !important;
 	max-width: 400px !important;
@@ -3364,6 +3366,7 @@ div.wpcf7-response-output {
 	text-align: center !important;
 	color: #768094 !important;
 }
+
 .emodal-close {
 	display: none !important;
 }
@@ -3371,9 +3374,17 @@ div.wpcf7-response-output {
 .emodal input[type="submit"] {
 	width: 100%;
 }
+
 .emodal-close {
 	background: #e15f41 !important;
 }
+
 .emodal-overlay {
-	background: rgba(0,0,0,.4) !important;
+	background: rgba(0, 0, 0, .4) !important;
 }
+@media screen and (max-width: 350px) {
+	.header-brand img {
+		width: 200px;
+	}
+}
+
