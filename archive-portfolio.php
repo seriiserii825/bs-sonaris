@@ -18,56 +18,58 @@ get_header();
 
             <div class="section section-portfolio">
                 <div class="portfolio">
-                    <?php $flag = [];
-                    if ( have_posts() ) :
-	                    $n = 0;
-	                    while ( have_posts() ) : the_post();
-		                    $year = get_the_date( 'm' );
+					<?php $flag = [];
+					if (have_posts()) :
+						$n = 0;
+						while (have_posts()) : the_post();
+							$year = get_the_date('m');
 
-		                    if ( ! in_array( $year, $flag ) ) {
-			                    $flag[] = $year;
+							if (!in_array($year, $flag)) {
+								$flag[] = $year;
 
-			                    # закрытие portfolio-block
-			                    # если выводится первый блок - закрывать предыдущий  не надо
-			                    # если не первый то - закрываем
-			                    if ( $n !== 0 ) {
-				                    echo '</div>';
-			                    }
+								# закрытие portfolio-block
+								# если выводится первый блок - закрывать предыдущий  не надо
+								# если не первый то - закрываем
+								if ($n !== 0) {
+									echo '</div>';
+								} ?>
 
-			                    # открыть portfolio-block
-			                    echo '<div class="portfolio-block">'; ?>
-                                <?php
+								<?php
                                     $init_date = get_the_date('F, Y');
-                                ?>
-                                <?php if(get_lang() == '_ro'): ?>
-                                    <h2><?php echo strtoupper(get_the_date('F, Y')[0]).substr(get_the_date('F, Y'), 1); ?></h2>
-                                <?php else: ?>
-                                    <h2><?php echo get_the_date('F, Y'); ?></h2>
-                                <?php endif; ?>
-		                    <?php }
+								?>
 
-		                    echo   get_template_part( 'template-parts/content', get_post_type() );
-		                    $n ++;
-	                    endwhile;
-	                    # закрыть последний portfolio-block
-	                    echo '</div>';
-                    else :
-                    endif; ?>
+								<?php if (get_lang() == '_ro'): ?>
+                                    <h2 class="portfolio__title"><?php echo strtoupper(get_the_date('F, Y')[0]) . substr(get_the_date('F, Y'), 1); ?></h2>
+								<?php else: ?>
+                                    <h2 class="portfolio__title"><?php echo get_the_date('F, Y'); ?></h2>
+								<?php endif; ?>
+
+								<?php # открыть portfolio-block
+								echo '<div class="portfolio-block">'; ?>
+							<?php }
+
+							echo get_template_part('template-parts/content', get_post_type());
+							$n++;
+						endwhile;
+						# закрыть последний portfolio-block
+						echo '</div>';
+					else :
+					endif; ?>
 
 
-                <div class="container">
-                    <?php the_posts_pagination([
-                        'show_all' => true, // показаны все страницы участвующие в пагинации
-                        'end_size' => 1,     // количество страниц на концах
-                        'mid_size' => 1,     // количество страниц вокруг текущей
-                        'prev_next' => false,  // выводить ли боковые ссылки "предыдущая/следующая страница".
-                        'prev_text' => __('« Previous'),
-                        'next_text' => __('Next »'),
-                        'add_args' => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
-                        'add_fragment' => '',     // Текст который добавиться ко всем ссылкам.
-                        'screen_reader_text' => __(''),
-                    ]); ?>
-                </div>
+                    <div class="container">
+						<?php the_posts_pagination([
+							'show_all' => true, // показаны все страницы участвующие в пагинации
+							'end_size' => 1,     // количество страниц на концах
+							'mid_size' => 1,     // количество страниц вокруг текущей
+							'prev_next' => false,  // выводить ли боковые ссылки "предыдущая/следующая страница".
+							'prev_text' => __('« Previous'),
+							'next_text' => __('Next »'),
+							'add_args' => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
+							'add_fragment' => '',     // Текст который добавиться ко всем ссылкам.
+							'screen_reader_text' => __(''),
+						]); ?>
+                    </div>
 
 					<?php
 					else :

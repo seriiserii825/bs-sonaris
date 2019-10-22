@@ -2604,10 +2604,14 @@ img.mfp-img {
 	padding: 20px 0 40px
 }
 .portfolio-block {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	grid-gap: 10px;
 	margin-bottom: 60px;
-	text-align: left;
 }
-.portfolio-block h2 {
+
+.portfolio__title {
+	text-align: left;
 	border-bottom: 1px solid #d4dbea;
 }
 .portfolio-block a{
@@ -2627,11 +2631,8 @@ img.mfp-img {
 
 .portfolio-block .portfolio-item {
 	position: relative;
-	display: inline-block;
-	vertical-align: top;
-	width: 20%;
 	padding-top: 20%;
-	height: 0;
+	height: 200px;
 	color: #ffffff;
 	text-decoration: none;
 	-webkit-transition: 0.15s ease-in-out;
@@ -2703,6 +2704,22 @@ img.mfp-img {
 	transform: scale(1)
 }
 
+@media screen and (max-width: 509px) {
+	.portfolio-block {
+		display: block;
+	}
+	.portfolio-block .portfolio-item {
+		display: table;
+		width: 300px;
+		margin: 0 auto 30px;
+	}
+	.portfolio__title {
+		text-align: center;
+	}
+}
+.section-portfolio-title {
+	border-bottom: 1px solid #eef1f6;
+}
 @media only screen and (max-width: 480px) {
 	.portfolio-item {
 		width: 50%;

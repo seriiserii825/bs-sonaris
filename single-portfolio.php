@@ -60,12 +60,14 @@
 								<?php endforeach; ?>
                             </div>
 
-                            <button id="js-show-single-portfolio-popup" class="btn btn-lg btn-danger btn-rounded waves-effect"><?php echo carbon_get_theme_option('crb_order_online' . get_lang()); ?></button>
+                            <button id="js-show-single-portfolio-popup"
+                                    class="btn btn-lg btn-danger btn-rounded waves-effect"><?php echo carbon_get_theme_option('crb_order_online' . get_lang()); ?></button>
                             </p>
 
                             <div class="popup-small" id="js-single-portfolio-form">
                                 <div class="form-header__close">
-                                    <img src="<?php echo get_template_directory_uri() . '/assets/img/close.svg'; ?>" alt="">
+                                    <img src="<?php echo get_template_directory_uri() . '/assets/img/close.svg'; ?>"
+                                         alt="">
                                 </div>
                                 <h3 class="popup-small-header"><?php echo carbon_get_theme_option('crb_single_portfolio_form_title' . get_lang()); ?></h3>
                                 <p><?php echo carbon_get_theme_option('crb_single_portfolio_form_text' . get_lang()); ?></p>

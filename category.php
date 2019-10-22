@@ -13,7 +13,7 @@
                     <div class="container">
                         <div class="print__content">
                             <div class="print__image">
-								<?php echo kama_thumb_img( 'w=250' ); ?>
+								<?php echo kama_thumb_img( 'w=350 &h=250' ); ?>
                             </div>
                             <div class="print__text">
                                 <h2><?php the_title(); ?></h2>

@@ -1,19 +1,21 @@
+<?php
+$term = get_the_terms($post->ID, 'model');
+$portfolio_gallery = new WP_Query([
+	'post_type' => 'portfolio',
+	'posts_per_page' => -1,
+	'model' => $term[0]->slug,
+	'post__not_in' => [$post->ID]
+]);
+?>
+
+<?php if($portfolio_gallery->have_posts()): ?>
+
 <div class="section section-portfolio">
-	<h2 class="section-portfolio-title"><?php echo carbon_get_theme_option('crb_portfolio_single_gallery_title'.get_lang()); ?></h2>
+    <h2 class="section-portfolio-title"><?php echo carbon_get_theme_option('crb_portfolio_single_gallery_title'.get_lang()); ?></h2>
 
 
     <div class="relative-portfolio-gallery" id="relative-portfolio-gallery">
-		<?php
-		$term = get_the_terms($post->ID, 'model');
-        $portfolio_gallery = new WP_Query([
-            'post_type' => 'portfolio',
-            'posts_per_page' => -1,
-            'model' => $term[0]->slug,
-            'post__not_in' => [$post->ID]
-        ]);
-        ?>
 
-        <?php if($portfolio_gallery->have_posts()): ?>
         	<?php while($portfolio_gallery->have_posts()): ?>
         		<?php $portfolio_gallery->the_post(); ?>
                 <a href="<?php the_permalink(); ?>" class="relative-portfolio-gallery__item">
@@ -24,6 +26,6 @@
                 </a>
         	<?php endwhile; ?>
         	<?php wp_reset_postdata(); ?>
-        <?php endif; ?>
     </div>
 </div>
+<?php endif; ?>
