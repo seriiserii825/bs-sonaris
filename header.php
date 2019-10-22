@@ -137,22 +137,27 @@
 					$phone_balti_clear = clear_phone($phone_balti);
 					?>
                     <li class="list-item">
-                        <a class="list-item-link" title="<?php echo carbon_get_theme_option('crb_chishinau'.get_lang()); ?>" href="tel:<?php echo $phone_chishinau_clear; ?>">
+                        <a class="list-item-link"
+                           title="<?php echo carbon_get_theme_option('crb_chishinau' . get_lang()); ?>"
+                           href="tel:<?php echo $phone_chishinau_clear; ?>">
                             <i class="fa fa-phone"></i>
-                            <span><?php echo carbon_get_theme_option('crb_chishinau'.get_lang()); ?>:</span>
+                            <span><?php echo carbon_get_theme_option('crb_chishinau' . get_lang()); ?>:</span>
                             <span><?php echo $phone_chishinau; ?></span>
                         </a>
                     </li>
                     <li class="list-item">
-                        <a class="list-item-link" title="<?php echo carbon_get_theme_option('crb_balti'.get_lang()); ?>" href="tel:<?php echo $phone_balti_clear; ?>">
+                        <a class="list-item-link"
+                           title="<?php echo carbon_get_theme_option('crb_balti' . get_lang()); ?>"
+                           href="tel:<?php echo $phone_balti_clear; ?>">
                             <i class="fa fa-phone"></i>
-                            <span><?php echo carbon_get_theme_option('crb_balti'.get_lang()); ?>:</span>
+                            <span><?php echo carbon_get_theme_option('crb_balti' . get_lang()); ?>:</span>
                             <span><?php echo $phone_balti; ?></span>
                         </a>
                     </li>
                     <li class="list-item"><a class="list-item-link"
                                              href="mailto:<?php echo carbon_get_theme_option('crb_email'); ?>"><i
-                                    class="fa fa-envelope"></i><span><?php echo carbon_get_theme_option('crb_email'); ?></span></a></li>
+                                    class="fa fa-envelope"></i><span><?php echo carbon_get_theme_option('crb_email'); ?></span></a>
+                    </li>
                 </ul>
             </nav>
 
@@ -196,29 +201,10 @@
 				'walker' => '',
 			)); ?>
 
-			<?php if (get_lang() == '_ru'): ?>
-                <button class="btn btn-danger btn-rounded waves-effect eModal-1">
-                    <i class="fa fa-phone"></i>
-                    <span>Заказать звонок</span>
-                </button>
-			<?php endif; ?>
-
-
-			<?php if (get_lang() == '_ro'): ?>
-                <button class="btn btn-danger btn-rounded waves-effect eModal-2">
-                    <i class="fa fa-phone"></i>
-                    <span>Un apel</span>
-                </button>
-
-			<?php endif; ?>
-
-			<?php if (get_lang() == '_en'): ?>
-                <button class="btn btn-danger btn-rounded waves-effect eModal-3">
-                    <i class="fa fa-phone"></i>
-                    <span>Request a call</span>
-                </button>
-
-			<?php endif; ?>
+            <button class="btn btn-danger btn-rounded waves-effect" id="js-request-a-call">
+                <i class="fa fa-phone"></i>
+                <span><?php echo carbon_get_theme_option('crb_request_a_call' . get_lang()); ?></span>
+            </button>
 
             <button class="btn btn-bars" data-toggle="navbar"><i class="fa fa-bars"></i></button>
         </div>

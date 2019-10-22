@@ -65,7 +65,7 @@ jQuery(document).ready(function ($) {
 
 	// Services Navbar
 	let topHeader = $('#js-topbar');
-	let fixedTopHeader = function(){
+	let fixedTopHeader = function () {
 		let topHeaderOffset = topHeader.offset().top + $('#js-topbar').outerHeight();
 		$(window).on('scroll', function () {
 			let scroll = $(window).scrollTop();
@@ -83,7 +83,7 @@ jQuery(document).ready(function ($) {
 		let scroll = $(window).scrollTop();
 
 		let st = $(this).scrollTop();
-		if (st > topPs){
+		if (st > topPs) {
 			$('#js-header').removeClass('fixed');
 			header.css('top', 0);
 		} else {
@@ -95,25 +95,25 @@ jQuery(document).ready(function ($) {
 		if (scroll >= stickyOffset) {
 			sticky.addClass('in-view');
 			sticky.css('top', topHeader.outerHeight());
-		}  else  {
+		} else {
 			sticky.removeClass('in-view');
 			sticky.css('top', '-100%');
 		}
 	});
 
 	// Popup CallBack
-	$('[data-mfp-src="#callback-form"]').magnificPopup({
-		type: 'inline',
-		preloader: false,
-		removalDelay: 750,
-		mainClass: 'mfp-fade'
-	});
-	$('[data-mfp-src="#order-form"]').magnificPopup({
-		type: 'inline',
-		preloader: false,
-		removalDelay: 750,
-		mainClass: 'mfp-fade'
-	});
+	// $('[data-mfp-src="#callback-form"]').magnificPopup({
+	// 	type: 'inline',
+	// 	preloader: false,
+	// 	removalDelay: 750,
+	// 	mainClass: 'mfp-fade'
+	// });
+	// $('[data-mfp-src="#order-form"]').magnificPopup({
+	// 	type: 'inline',
+	// 	preloader: false,
+	// 	removalDelay: 750,
+	// 	mainClass: 'mfp-fade'
+	// });
 
 	// Popup Gallery
 	$('.gallery-nav').magnificPopup({
@@ -141,5 +141,34 @@ jQuery(document).ready(function ($) {
 	$('[data-toggle="navbar"]').on('blur', function () {
 		$('.header-nav').removeClass('open');
 	});
+
+	let headerModal = function () {
+		$('#js-request-a-call').on('click', function () {
+			$('body').addClass('fixed');
+			$('#js-form-header').fadeIn(500);
+			$('#js-overlay').fadeIn(300);
+		});
+
+	};
+	headerModal();
+
+	let closeModal = function(){
+		$('#js-overlay, .form-header__close').on('click', function () {
+			$('#js-form-header').fadeOut(500);
+			$('#js-overlay').fadeOut(300);
+			$('body').removeClass('fixed');
+			$('#js-single-portfolio-form').fadeOut(500);
+		});
+	};
+	closeModal();
+
+	let singlePortfolioModal = function () {
+		$('#js-show-single-portfolio-popup').on('click', function () {
+			$('body').addClass('fixed');
+			$('#js-single-portfolio-form').fadeIn(500);
+			$('#js-overlay').fadeIn(300);
+		});
+	};
+	singlePortfolioModal();
 
 });

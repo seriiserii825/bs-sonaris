@@ -92,6 +92,36 @@ function crb_attach_theme_options()
 					Field::make('text', 'crb_clients_text', __('Client name', 'bs_sonaris')),
 				))
 				->set_layout('tabbed-horizontal')
+		))
+		->add_tab('Header form', array(
+			Field::make('text', 'crb_form_header_title_ro', 'crb_form_header_title_ro')
+				->set_width(30),
+			Field::make('text', 'crb_form_header_title_ru', 'crb_form_header_title_ru')
+				->set_width(30),
+			Field::make('text', 'crb_form_header_title_en', 'crb_form_header_title_en')
+				->set_width(30),
+
+			Field::make('textarea', 'crb_form_header_text_ro', 'crb_form_header_text_ro')
+				->set_width(30),
+			Field::make('textarea', 'crb_form_header_text_ru', 'crb_form_header_text_ru')
+				->set_width(30),
+			Field::make('textarea', 'crb_form_header_text_en', 'crb_form_header_text_en')
+				->set_width(30),
+		))
+		->add_tab('Single portfolio form', array(
+			Field::make('text', 'crb_single_portfolio_form_title_ro', 'crb_single_portfolio_form_title_ro')
+				->set_width(30),
+			Field::make('text', 'crb_single_portfolio_form_title_ru', 'crb_single_portfolio_form_title_ru')
+				->set_width(30),
+			Field::make('text', 'crb_single_portfolio_form_title_en', 'crb_single_portfolio_form_title_en')
+				->set_width(30),
+
+			Field::make('textarea', 'crb_single_portfolio_form_text_ro', 'crb_single_portfolio_form_text_ro')
+				->set_width(30),
+			Field::make('textarea', 'crb_single_portfolio_form_text_ru', 'crb_single_portfolio_form_text_ru')
+				->set_width(30),
+			Field::make('textarea', 'crb_single_portfolio_form_text_en', 'crb_single_portfolio_form_text_en')
+				->set_width(30),
 		));
 
 	// Add second options page under 'Basic Options'
@@ -117,6 +147,21 @@ function crb_attach_theme_options()
 			Field::make('text', 'crb_portfolio_single_gallery_title_ru', 'crb_portfolio_single_gallery_title_ru')
 				->set_width(30),
 			Field::make('text', 'crb_portfolio_single_gallery_title_en', 'crb_portfolio_single_gallery_title_en')
+				->set_width(30),
+		))
+		->add_tab('Buttons', array(
+			Field::make('text', 'crb_request_a_call_ro', 'crb_request_a_call_ro')
+				->set_width(30),
+			Field::make('text', 'crb_request_a_call_ru', 'crb_request_a_call_ru')
+				->set_width(30),
+			Field::make('text', 'crb_request_a_call_en', 'crb_request_a_call_en')
+				->set_width(30),
+
+			Field::make('text', 'crb_order_online_ro', 'crb_order_online_ro')
+				->set_width(30),
+			Field::make('text', 'crb_order_online_ru', 'crb_order_online_ru')
+				->set_width(30),
+			Field::make('text', 'crb_order_online_en', 'crb_order_online_en')
 				->set_width(30),
 		));
 

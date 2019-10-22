@@ -17,7 +17,7 @@ function my_custom_init(){
 			'not_found'          =>  __( 'Not found', 'bs_sonaris' ),
 			'not_found_in_trash' => __( 'Not found in trash', 'bs_sonaris' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => __( 'Slides', 'bs_sonaris' )
+			'menu_name'          => __( 'Slider', 'bs_sonaris' )
 
 		  ),
 		'public'             => true,
@@ -30,6 +30,7 @@ function my_custom_init(){
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
+		'menu_icon' => get_template_directory_uri().'/assets/img/slider.png',
 		'supports'           => array('title','thumbnail')
 	) );
 
@@ -59,6 +60,7 @@ function my_custom_init(){
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
+		'menu_icon' => get_template_directory_uri().'/assets/img/portfolio.png',
 		'supports'           => array('title','editor', 'thumbnail')
 	) );
 }
