@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php get_template_part('template-parts/services'); ?>
 
-<?php if (in_category([49, 37, 29, 45, 59, 35])): ?>
+<?php if (is_category([49, 37, 29, 45, 59, 35])): ?>
 	<?php require_once __DIR__ . '/template-parts/category_level_2.php'; ?>
 <?php else: ?>
     <section class="section section-single">
@@ -12,7 +12,7 @@
                     <div class="print__content">
                         <div class="print__text">
                             <h2><?php echo get_the_category_by_ID($category_id); ?></h2>
-                            <p><?php echo apply_filters( 'the_content', carbon_get_term_meta($category_id, 'crb_category_text'.get_lang() ) ); ?></p>
+                            <p><?php echo apply_filters('the_content', carbon_get_term_meta($category_id, 'crb_category_text' . get_lang())); ?></p>
                         </div>
                     </div>
                 </div>
