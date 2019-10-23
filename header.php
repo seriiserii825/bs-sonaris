@@ -63,28 +63,15 @@
         <div class="sticky-right">
             <nav class="nav sticky-nav">
 				<?php
-				$id_rus = 19;
-				$id_en = 21;
-				$id_ro = 23;
-				$locale = get_locale();
-
-				if ($locale === 'ro_RO') {
-					$id = $id_ro;
-				} elseif ($locale === 'ru_RU') {
-					$id = $id_rus;
-				} else {
-					$id = $id_en;
-				}
-
 				$categories = get_categories([
 					'taxonomy' => 'category',
 					'type' => 'post',
 					'child_of' => 0,
-					'parent' => $id,
+					'parent' => 19,
 					'orderby' => 'name',
 					'order' => 'ASC',
 					'hide_empty' => 0,
-					'hierarchical' => 1,
+					'hierarchical' => 0,
 					'exclude' => '',
 					'include' => '',
 					'number' => 0,
@@ -104,6 +91,7 @@
         </div>
     </div>
 </div>
+
 <div class="topbar" id="js-topbar">
     <div class="container">
         <div class="topbar-left">
