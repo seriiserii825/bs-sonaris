@@ -21,45 +21,51 @@ get_header();
 
             <div class="section section-portfolio">
                 <div class="portfolio">
-					<?php
-					$flag = [];
-					$n = 0;
-					?>
-					<?php if ($portfolio_posts->have_posts()): ?>
-						<?php while ($portfolio_posts->have_posts()): ?>
-							<?php $portfolio_posts->the_post(); ?>
-							<?php $year = get_the_date('m'); ?>
-							<?php if (!in_array($year, $flag)): ?>
-								<?php $flag[] = $year; ?>
-							<?php endif; ?>
-							<?php if ($n !== 0): ?>
-								<?php echo '</div>'; ?>
-							<?php endif; ?>
+                    <?php $flag = [];
+                    if ( $portfolio_posts->have_posts() ) :
+	                    $n = 0;
+	                    while ( $portfolio_posts->have_posts() ) : $portfolio_posts->the_post();
+		                    $year = get_the_date( 'm' );
 
-							<?php $init_date = get_the_date('F, Y'); ?>
+		                    if ( ! in_array( $year, $flag ) ) {
+			                    $flag[] = $year;
 
-							<?php if (get_lang() == '_ro'): ?>
-                                <h2 class="portfolio__title"><?php echo strtoupper(get_the_date('F, Y')[0]) . substr(get_the_date('F, Y'), 1); ?></h2>
-							<?php else: ?>
-                                <h2 class="portfolio__title"><?php echo get_the_date('F, Y'); ?></h2>
-							<?php endif; ?>
+			                    # закрытие portfolio-block
+			                    # если выводится первый блок - закрывать предыдущий  не надо
+			                    # если не первый то - закрываем
+			                    if ( $n !== 0 ) {
+				                    echo '</div>';
+			                    }?>
 
-                            <div class="portfolio-block">
-								<?php
-								$portfolio_ids = carbon_get_theme_option('crb_portfolio_gallery');
-								$thumb_url = kama_thumb_src('w=300 &h=300');
-								?>
+			                    <?php if (get_lang() == '_ro'): ?>
+                                    <h2 class="portfolio__title"><?php echo strtoupper(get_the_date('F, Y')[0]) . substr(get_the_date('F, Y'), 1); ?></h2>
+			                    <?php else: ?>
+                                    <h2 class="portfolio__title"><?php echo get_the_date('F, Y'); ?></h2>
+			                    <?php endif; ?>
 
-                                <a class="portfolio-item waves-effect" href="<?php the_permalink(); ?>">
-                                    <img class="portfolio-item-img" src="<?php echo $thumb_url; ?>" alt=""/>
-                                    <!--	<span class="btn btn-white btn-rounded">-->
-									<?php //the_title(); ?><!--</span>-->
-                                    <span class="portfolio-item__title"><?php the_title(); ?></span>
-                                </a>
-                            </div>
-						<?php endwhile; ?>
-						<?php wp_reset_postdata(); ?>
-					<?php endif; ?>
+			                   <?php # открыть portfolio-block
+			                    echo '<div class="portfolio-block">';
+		                    }?>
+
+		                    <?php
+		                    $portfolio_ids = carbon_get_theme_option('crb_portfolio_gallery');
+		                    $thumb_url = kama_thumb_src('w=300 &h=300');
+		                    ?>
+
+                            <a class="portfolio-item waves-effect" href="<?php the_permalink(); ?>">
+                                <img class="portfolio-item-img" src="<?php echo $thumb_url; ?>" alt=""/>
+                                <!--	<span class="btn btn-white btn-rounded">-->
+			                    <?php //the_title(); ?><!--</span>-->
+                                <span class="portfolio-item__title"><?php the_title(); ?></span>
+                            </a>
+
+		                    <?php $n ++;
+	                    endwhile;
+	                    # закрыть последний portfolio-block
+	                    echo '</div>';
+                    else :
+                    endif; ?>
+
                 </div>
             </div>
     </section>

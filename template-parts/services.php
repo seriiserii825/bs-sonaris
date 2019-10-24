@@ -6,12 +6,9 @@ $cat_parrent_id = '';
 
 if(is_category([49, 37, 29, 45, 59, 35])){
 	$cat_parrent_id = get_category($category_id)->term_id;
-	echo 'is_category_from_array';
 }elseif(is_category()){
 	$cat_parrent_id = get_category($category_id)->parent;
-	echo 'is_category';
-}else{
-	echo 'is_post';
+}elseif(is_single()){
 	$post_id = get_the_ID();
 	$cat_parrent_id = get_the_terms($post_id, 'category')[0]->parent;
 }
