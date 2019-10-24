@@ -167,6 +167,17 @@
             <a class="header-brand" href="<?php echo home_url(); ?>">
 				<?php echo wp_get_attachment_image($img_id, 'full'); ?>
             </a>
+            <div class="search-icon" id="js-search-icon">
+                <img src="<?php echo get_template_directory_uri().'/assets/img/search.svg'; ?>" alt="">
+            </div>
+
+
+            <div class="search" id="js-search">
+                <div class="close-search" id="js-close-search">
+                    <img src="<?php echo get_template_directory_uri().'/assets/img/close.svg'; ?>" alt="">
+                </div>
+               <?php echo do_shortcode('[search_live]'); ?>
+           </div>
         </div>
 
         <div class="header-right">

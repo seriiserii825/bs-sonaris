@@ -181,4 +181,17 @@ jQuery(document).ready(function ($) {
 	};
 	singlePortfolioModal();
 
+	let showSearch = function () {
+		$('#js-search-icon').on('click', function () {
+			$('#js-search').css('display', 'flex');
+			$('#js-close-search').show();
+		});
+	};
+	showSearch();
+
+	$('#js-close-search').on('click', function () {
+		$('#js-search').hide();
+		$('#js-close-search').hide();
+	});
+
 });
