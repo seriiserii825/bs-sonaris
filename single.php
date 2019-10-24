@@ -5,23 +5,24 @@
 <?php if (have_posts()) : ?>
 	<?php the_post(); ?>
 
-    <?php $category = get_the_category(); ?>
-
-    <?php vardump($category); ?>
+	<?php
+        $category = get_the_category();
+        $cat_id = $category[0]->term_id;
+        $cat_name = $category[0]->cat_name;
+        $cat_parrent_id = $category[0]->parent;
+        $cat_parrent_link = get_category_link($cat_parrent_id);
+        $cat_parrent_name = get_category($cat_parrent_id)->name;
+    ?>
 
     <div class="breadcrumbs">
         <div class="container">
             <nav class="nav breadcrumbs-nav">
                 <ul class="list">
                     <div class="list-item">
-                        <a class="list-item-link"
-                           href="<?php echo home_url(); ?>"><?php echo __('Main Page', 'bs_sonaris') ?></a>
+                        <a class="list-item-link" href="<?php echo $cat_parrent_link; ?>"><?php echo $cat_parrent_name; ?></a>
                     </div>
-					<?php
-					$post_type = get_post_type();
-					?>
-                    <div class="list-item"><a
-                                href="<?php echo get_post_type_archive_link('portfolio'); ?>"><?php echo $post_type; ?></a>
+                    <div class="list-item">
+                        <a href="<?php echo get_category_link($cat_id); ?>"><?php echo $cat_name; ?></a>
                     </div>
                     <div class="list-item"><span class="list-item-current"><?php the_title(); ?></span></div>
                 </ul>
@@ -92,7 +93,33 @@
     </article>
 
     <div class="container">
-		<?php require_once __DIR__ . '/template-parts/content-portolio-block.php'; ?>
+		<?php foreach ($category as $category_item): ?>
+			<?php $portfolio_gallery = new WP_Query([
+				'cat' => $category_item->term_id,
+				'posts_per_page' => 6,
+				'post__not_in' => [get_the_ID()]
+			]);
+			?>
+            <div class="section section-portfolio">
+                <h2 class="section-portfolio-title"><?php echo carbon_get_theme_option('crb_portfolio_single_gallery_title' . get_lang()); ?></h2>
+
+                <div class="relative-portfolio-gallery" id="relative-portfolio-gallery">
+					<?php if ($portfolio_gallery->have_posts()): ?>
+						<?php while ($portfolio_gallery->have_posts()): ?>
+							<?php $portfolio_gallery->the_post(); ?>
+                            <a href="<?php the_permalink(); ?>" class="relative-portfolio-gallery__item">
+                                <div class="relative-portfolio-gallery__text">
+                                    <h4 class="relative-portfolio-gallery__title"><?php the_title(); ?></h4>
+                                </div>
+								<?php echo kama_thumb_img('w=200 &h=200'); ?>
+                            </a>
+						<?php endwhile; ?>
+						<?php wp_reset_postdata(); ?>
+					<?php endif; ?>
+                </div>
+            </div>
+
+		<?php endforeach; ?>
     </div>
 
 <?php endif; ?>

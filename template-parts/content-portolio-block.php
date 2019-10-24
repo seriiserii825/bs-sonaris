@@ -1,5 +1,4 @@
 <?php
-$term = get_the_terms($post->ID, 'model');
 $portfolio_gallery = new WP_Query([
 	'post_type' => 'portfolio',
 	'posts_per_page' => -1,
