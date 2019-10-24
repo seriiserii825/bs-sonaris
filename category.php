@@ -19,19 +19,26 @@
             </div>
         </div>
         <div class="container">
-            <div class="gallery" id="js-gallery">
-				<?php $images = acf_photo_gallery('print_gallery', $post->ID); ?>
-				<?php foreach ($images as $image): ?>
-                    <div class="gallery__item">
-                        <a href="<?php echo $image['full_image_url']; ?>">
-							<?php echo kama_thumb_img(array(
-								'src' => $image['full_image_url'],
-								'w' => 150,
-								'h' => 150
-							)); ?>
-                        </a>
-                    </div>
-				<?php endforeach; ?>
+			<?php $portfolio_post = new WP_Query([
+				'cat' => $category_id,
+				'posts_per_page' => -1
+			]); ?>
+
+            <div class="gallery">
+				<?php if ($portfolio_post->have_posts()): ?>
+					<?php while ($portfolio_post->have_posts()): ?>
+						<?php $portfolio_post->the_post(); ?>
+                        <div class="gallery__item">
+                            <a href="<?php the_permalink(); ?>">
+								<?php echo kama_thumb_img(array(
+									'w' => 150,
+									'h' => 150
+								)); ?>
+                            </a>
+                        </div>
+					<?php endwhile; ?>
+					<?php wp_reset_postdata(); ?>
+				<?php endif; ?>
             </div>
         </div>
     </section>
