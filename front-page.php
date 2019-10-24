@@ -20,7 +20,8 @@
 
 	<?php foreach ($categories_print as $cat): ?>
 		<?php
-		$image_url = get_field('category_print_image', 'category_' . $cat->term_id);
+        $image_id = carbon_get_term_meta($cat->term_id, 'crb_category_image_big');
+        $image_url = kama_thumb_src('w=1600 &h=400', $image_id);
 		?>
         <div class="owl-carosel__item">
             <div class="owl-carosel__link">
@@ -107,7 +108,7 @@
     <h2 class="section__title">Portfolio</h2>
 	<?php
 	$portfolio_section = new WP_Query([
-		'post_type' => 'portfolio',
+		'cat' => 19,
 		'posts_per_page' => 10
 	]);
 	?>

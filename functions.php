@@ -5,6 +5,7 @@ if( ! defined('ABSPATH') ) exit;
 require_once __DIR__.'/inc/carbon-fields/cb.php';
 require_once __DIR__.'/inc/carbon-fields/cb-post-type.php';
 require_once __DIR__.'/inc/carbon-fields/cb-term-meta.php';
+require_once __DIR__.'/inc/carbon-fields/cb-post-print.php';
 require_once __DIR__.'/inc/func.php';
 require_once __DIR__.'/inc/acf-category.php';
 require_once __DIR__.'/inc/enqueue-style.php';

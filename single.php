@@ -6,20 +6,21 @@
 	<?php the_post(); ?>
 
 	<?php
-        $category = get_the_category();
-        $cat_id = $category[0]->term_id;
-        $cat_name = $category[0]->cat_name;
-        $cat_parrent_id = $category[0]->parent;
-        $cat_parrent_link = get_category_link($cat_parrent_id);
-        $cat_parrent_name = get_category($cat_parrent_id)->name;
-    ?>
+	$category = get_the_category();
+	$cat_id = $category[0]->term_id;
+	$cat_name = $category[0]->cat_name;
+	$cat_parrent_id = $category[0]->parent;
+	$cat_parrent_link = get_category_link($cat_parrent_id);
+	$cat_parrent_name = get_category($cat_parrent_id)->name;
+	?>
 
     <div class="breadcrumbs">
         <div class="container">
             <nav class="nav breadcrumbs-nav">
                 <ul class="list">
                     <div class="list-item">
-                        <a class="list-item-link" href="<?php echo $cat_parrent_link; ?>"><?php echo $cat_parrent_name; ?></a>
+                        <a class="list-item-link"
+                           href="<?php echo $cat_parrent_link; ?>"><?php echo $cat_parrent_name; ?></a>
                     </div>
                     <div class="list-item">
                         <a href="<?php echo get_category_link($cat_id); ?>"><?php echo $cat_name; ?></a>
@@ -32,11 +33,11 @@
     <article class="potfolio-article">
         <div class="container">
             <header class="potfolio-article-header">
-                <h1 class="header-title"><?php single_post_title(); ?></h1>
-                <div class="header-meta"><span
-                            class="header-meta-published"><?php echo __('Publish', 'bs_sonaris') ?>: <span><?php echo get_the_date('d F Y'); ?></span></span><span
-                            class="header-meta-category"><?php echo __('in', 'bs_sonaris') ?> <a
-                                href="<?php echo get_post_type_archive_link('portfolio'); ?>"><?php echo $post_type; ?></a></span>
+                <h1 class="header-title"><?php the_title(); ?></h1>
+                <div class="header-meta">
+                    <span class="header-meta-published">
+                        <?php echo __('Publish', 'bs_sonaris') ?>: <span><?php echo get_the_date('d F Y'); ?></span>
+                    </span>
                 </div>
             </header>
             <main class="potfolio-article-content">
@@ -55,7 +56,7 @@
                             </div>
 
                             <div class="gallery" id="js-gallery">
-								<?php $images = carbon_get_post_meta(get_the_ID(), 'crb_portfolio_gallery'); ?>
+								<?php $images = carbon_get_the_post_meta('crb_media_gallery_for_single'); ?>
 
 								<?php foreach ($images as $image): ?>
                                     <div class="gallery__item">
@@ -100,11 +101,11 @@
 				'post__not_in' => [get_the_ID()]
 			]);
 			?>
-            <div class="section section-portfolio">
-                <h2 class="section-portfolio-title"><?php echo carbon_get_theme_option('crb_portfolio_single_gallery_title' . get_lang()); ?></h2>
+			<?php if ($portfolio_gallery->have_posts()): ?>
+                <div class="section section-portfolio">
+                    <h2 class="section-portfolio-title"><?php echo carbon_get_theme_option('crb_portfolio_single_gallery_title' . get_lang()); ?></h2>
 
-                <div class="relative-portfolio-gallery" id="relative-portfolio-gallery">
-					<?php if ($portfolio_gallery->have_posts()): ?>
+                    <div class="relative-portfolio-gallery" id="relative-portfolio-gallery">
 						<?php while ($portfolio_gallery->have_posts()): ?>
 							<?php $portfolio_gallery->the_post(); ?>
                             <a href="<?php the_permalink(); ?>" class="relative-portfolio-gallery__item">
@@ -115,9 +116,9 @@
                             </a>
 						<?php endwhile; ?>
 						<?php wp_reset_postdata(); ?>
-					<?php endif; ?>
+                    </div>
                 </div>
-            </div>
+			<?php endif; ?>
 
 		<?php endforeach; ?>
     </div>

@@ -77,6 +77,7 @@ jQuery(document).ready(function ($) {
 	let stickyOffset = $('.section.section-services').offset().top + $('.section.section-services').outerHeight();
 	let topPs = 0;
 	let header = $('#js-header');
+	let topBar = $('#js-topbar');
 
 	$(window).on('scroll', function () {
 		let sticky = $('.sticky');
@@ -84,11 +85,20 @@ jQuery(document).ready(function ($) {
 
 		let st = $(this).scrollTop();
 		if (st > topPs) {
-			$('#js-header').removeClass('fixed');
+			header.removeClass('fixed');
 			header.css('top', 0);
+			$('body').css('padding-top', 0);
 		} else {
-			$('#js-header').addClass('fixed');
+			header.addClass('fixed');
 			header.css('top', topHeader.outerHeight());
+			$('body').css('padding-top', header.outerHeight() + topBar.outerHeight());
+			topBar.addClass('fixed');
+			// if(st === 0){
+			// 	$('body').css('padding-top', header.outerHeight() + topBar.outerHeight());
+			// 	topBar.addClass('fixed');
+			// }else {
+			// 	$('body').css('padding-top', 0);
+			// }
 		}
 		topPs = st;
 
