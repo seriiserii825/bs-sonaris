@@ -862,7 +862,7 @@ h1 {
 
 @media screen and (max-width: 1000px) {
 	h1 {
-		font-size: 2rem;
+		font-size: 3rem;
 	}
 }
 
@@ -3476,7 +3476,8 @@ a.more-link {
 		display: block;
 	}
 
-	.contacts__item:first-child {
+	.contacts_item:first-child {
+		margin-bottom: 30px;
 		border: none;
 	}
 }
