@@ -129,8 +129,8 @@
                            title="<?php echo carbon_get_theme_option('crb_chishinau' . get_lang()); ?>"
                            href="tel:<?php echo $phone_chishinau_clear; ?>">
                             <i class="fa fa-phone"></i>
-                            <span><?php echo carbon_get_theme_option('crb_chishinau' . get_lang()); ?>:</span>
-                            <span><?php echo $phone_chishinau; ?></span>
+                            <span class="phone_name"><?php echo carbon_get_theme_option('crb_chishinau' . get_lang()); ?></span><span>:</span>
+                            <span class="phone_number"><?php echo $phone_chishinau; ?></span>
                         </a>
                     </li>
                     <li class="list-item">
@@ -138,11 +138,12 @@
                            title="<?php echo carbon_get_theme_option('crb_balti' . get_lang()); ?>"
                            href="tel:<?php echo $phone_balti_clear; ?>">
                             <i class="fa fa-phone"></i>
-                            <span><?php echo carbon_get_theme_option('crb_balti' . get_lang()); ?>:</span>
-                            <span><?php echo $phone_balti; ?></span>
+                            <span class="phone_name"><?php echo carbon_get_theme_option('crb_balti' . get_lang()); ?></span><span>:</span>
+                            <span class="phone_number"><?php echo $phone_balti; ?></span>
                         </a>
                     </li>
-                    <li class="list-item"><a class="list-item-link"
+                    <li class="list-item">
+                        <a class="list-item-link"
                                              href="mailto:<?php echo carbon_get_theme_option('crb_email'); ?>"><i
                                     class="fa fa-envelope"></i><span><?php echo carbon_get_theme_option('crb_email'); ?></span></a>
                     </li>
@@ -168,16 +169,15 @@
 				<?php echo wp_get_attachment_image($img_id, 'full'); ?>
             </a>
             <div class="search-icon" id="js-search-icon">
-                <img src="<?php echo get_template_directory_uri().'/assets/img/search.svg'; ?>" alt="">
+                <img src="<?php echo get_template_directory_uri() . '/assets/img/search.svg'; ?>" alt="">
             </div>
-
 
             <div class="search" id="js-search">
                 <div class="close-search" id="js-close-search">
-                    <img src="<?php echo get_template_directory_uri().'/assets/img/close.svg'; ?>" alt="">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/img/close.svg'; ?>" alt="">
                 </div>
-               <?php echo do_shortcode('[search_live]'); ?>
-           </div>
+				<?php echo do_shortcode('[search_live]'); ?>
+            </div>
         </div>
 
         <div class="header-right">
