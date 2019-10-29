@@ -1,4 +1,5 @@
 <section class="section">
+    <h2 class="category-title"><?php echo single_cat_title(); ?></h2>
 	<div class="print">
 		<?php $category_id = get_queried_object()->term_id; ?>
 
