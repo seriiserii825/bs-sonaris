@@ -3466,6 +3466,9 @@ img.mfp-img {
 	.print__content {
 		display: block;
 	}
+	.print__inner-text {
+		height: 142px;
+	}
 
 	.print__image {
 		margin-bottom: 30px;
