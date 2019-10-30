@@ -33,7 +33,7 @@
 						</div>
 						<div class="print__text">
 							<h2><?php echo $item->cat_name; ?></h2>
-							<p><?php echo apply_filters( 'the_content', carbon_get_term_meta($term_id, 'crb_category_text'.get_lang() ) ); ?></p>
+							<div class="print__inner-text"><?php echo apply_filters( 'the_content', carbon_get_term_meta($term_id, 'crb_category_text'.get_lang() ) ); ?></div>
 							<a href="<?php echo $category_link; ?>" class="btn btn-danger btn-rounded waves-effect">
 								<span><?php echo __('Read more', 'bs_sonaris') ?></span>
 							</a>
