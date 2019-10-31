@@ -3541,12 +3541,14 @@ a.more-link {
 .contacts ul li {
 	position: relative;
 	padding-left: 20px;
+	line-height: 16px;
+	margin-bottom: 10px;
 }
 
 .contacts ul li::before {
 	content: '';
 	position: absolute;
-	top: 50%;
+	top: 8px;
 	left: 0;
 	transform: translateY(-50%);
 	width: 10px;
