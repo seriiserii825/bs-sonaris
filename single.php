@@ -45,7 +45,7 @@
                     <div class="col md-4">
 
 						<?php
-						$thumb_url = kama_thumb_src('w=375 &h=375');
+						$thumb_url = kama_thumb_src('w=380 &h=380');
 						?>
                         <div class="potfolio-article-image"><img src="<?php echo $thumb_url; ?>" alt=""/></div>
                     </div>

@@ -1041,15 +1041,11 @@ textarea:-webkit-autofill:hover {
 
 .mfp-zoom-out-cur,
 .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
-	cursor: -moz-zoom-out;
-	cursor: -webkit-zoom-out;
 	cursor: zoom-out
 }
 
 .mfp-zoom {
 	cursor: pointer;
-	cursor: -webkit-zoom-in;
-	cursor: -moz-zoom-in;
 	cursor: zoom-in
 }
 
@@ -1648,7 +1644,6 @@ img.mfp-img {
 
 .owl-carousel.owl-grab {
 	cursor: move;
-	cursor: -webkit-grab;
 	cursor: grab
 }
 
@@ -3458,7 +3453,7 @@ img.mfp-img {
 
 .print__inner-text {
 	margin-bottom: 20px;
-	height: 142px;
+	height: 182px;
 	overflow: hidden;
 }
 
@@ -3508,8 +3503,12 @@ a.more-link {
 .contacts {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 20px;
+	grid-gap: 40px;
 	padding-bottom: 40px;
+}
+.contacts__item {
+	padding: 20px;
+	box-shadow: 0 2px 6px rgba(0,0,0,.2);
 }
 
 .contacts__item:first-child {
@@ -3526,12 +3525,13 @@ a.more-link {
 		border: none;
 	}
 }
-
-
 .contacts h3 {
 	font-weight: bold;
 }
-
+.contacts h4 {
+	margin-bottom: 12px;
+	line-height: 1.1;
+}
 .contacts ul {
 	list-style-type: none;
 	margin: 0;
@@ -3540,29 +3540,47 @@ a.more-link {
 
 .contacts ul li {
 	position: relative;
-	padding-left: 20px;
+	display: flex;
 	line-height: 16px;
 	margin-bottom: 10px;
 }
+@media screen and (max-width: 576px) {
+	.contacts ul li {
+		flex-wrap: wrap;
+	}
+	.contacts ul li.no-wrap {
+		flex-wrap: nowrap;
+	}
 
-.contacts ul li::before {
-	content: '';
-	position: absolute;
-	top: 8px;
-	left: 0;
-	transform: translateY(-50%);
-	width: 10px;
-	height: 2px;
-	background: #254796;
+}
+
+.contacts ul li:hover i {
+	color: #8BA31C;
+}
+.contacts ul li i {
+	margin-right: 6px;
+	color: #b0cb1f;
+	transition: all .4s;
+}
+
+.contacts ul span {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 4px;
 }
 
 .contacts ul a {
+	display: inline-block;
+	vertical-align: middle;
 	text-decoration: none;
 	color: #254796;
+	transition: all .2s;
+	transform: scale(1);
 }
 
 .contacts ul a:hover {
 	text-decoration: underline;
+	transform: scale(1.02)
 }
 
 .screen-reader-text {
@@ -3983,4 +4001,3 @@ div.wpcf7-response-output {
 		grid-template-columns: repeat(2, 150px);
 	}
 }
-
