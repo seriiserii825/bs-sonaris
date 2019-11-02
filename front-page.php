@@ -2,39 +2,31 @@
 
 <div class="owl-carousel fullscreen">
 	<?php
-	$categories_print = get_categories([
-		'taxonomy' => 'category',
-		'type' => 'post',
-		'child_of' => 0,
-		'parent' => 19,
-		'orderby' => 'name',
-		'order' => 'ASC',
-		'hide_empty' => 0,
-		'hierarchical' => 1,
-		'exclude' => '',
-		'include' => '',
-		'number' => 0,
-		'pad_counts' => false,
+	$slider_posts = new WP_Query([
+		'post_type' => 'slider',
+		'posts_per_page' => -1
 	]);
 	?>
 
-	<?php foreach ($categories_print as $cat): ?>
-		<?php
-        $image_id = carbon_get_term_meta($cat->term_id, 'crb_category_image_big');
-        $image_url = kama_thumb_src('w=1600 &h=400', $image_id);
-		?>
-        <div class="owl-carosel__item">
-            <div class="owl-carosel__link">
-                <img src="<?php echo $image_url; ?>" alt="">
-                <div class="owl-carousel__caption">
-                    <div class="container">
-						<?php echo $cat->name; ?>
+	<?php if ($slider_posts->have_posts()): ?>
+		<?php while ($slider_posts->have_posts()): ?>
+			<?php $slider_posts->the_post(); ?>
+			<?php $image_url = kama_thumb_src('w=1600 &h=400'); ?>
+            <div class="owl-carosel__item">
+                <div class="owl-carosel__link">
+                    <img src="<?php echo $image_url; ?>" alt="">
+                    <div class="owl-carousel__caption">
+                        <div class="container">
+                            <span><?php the_title() ?></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-	<?php endforeach; ?>
-	<?php wp_reset_postdata(); ?>
+
+		<?php endwhile; ?>
+		<?php wp_reset_postdata(); ?>
+	<?php endif; ?>
+
 </div>
 
 <?php get_template_part('template-parts/services'); ?>

@@ -17,8 +17,8 @@ function crb_attach_term_meta()
 			Field::make('image', 'crb_category_image', 'crb_category_image')
 				->set_help_text('350x250'),
 
-			Field::make('image', 'crb_category_image_big', 'crb_category_image_big')
-				->set_help_text('1600x400'),
+//			Field::make('image', 'crb_category_image_big', 'crb_category_image_big')
+//				->set_help_text('1600x400'),
 
 			Field::make('rich_text', 'crb_category_text_ro', 'crb_category_text_ro'),
 			Field::make('rich_text', 'crb_category_text_ru', 'crb_category_text_ru'),
